@@ -1,0 +1,25 @@
+There are several algorithms of
+encryption
+	AES-xxx bit, see previous notes and website archives to determine xxx
+padding		(doesn't really hurt decryption, except the image wud probably be invalid)
+	PCKS#7
+	PCKS#5
+	some self made idiocity
+key derivation
+	PBKDF2
+	PBKDF1
+	SHAing the password etc...
+  search("key derivation algorithm +android")
+
+
+The puorpose is to find out exact name of each kind of algorithm, method:
+	1. run pirated, full (pro) version of PhotoLocker on tablet
+	2. encrypt 4 images, black(150*150), red, green, blue with the password 1234
+	3. use all possible permutations of algorithms to decrypt that image on computer with the help of openSSL binary
+		**3.1. maybe the password is just to protect the app itself and doesn't participate in encryption. use data from ".config" as keyfile supplied to openSSL to decrypt images, if it doesn't work try manipulating its contents -- base64decode, SHA(base64decode(file.read())) etc. BECOZ
+			+ its idiotic/impossible to decrypt and then re-encrypt all images if password if forgotten, remember - they send you the pasword
+			+ app asks for .config file
+			- maybe some combination of data from ".config" and (not password) some static data like user.order_datatime or something else (fetched from remote server when new device setup).
+	4. step 3 would most likely reveal the correct combination since password is known to be 1234
+	5.1. if step 4 succeeds then combine the algorithms' name's knowledge derived from this excercise with breaker.py
+	5.2. if step 4 fails, hack account
