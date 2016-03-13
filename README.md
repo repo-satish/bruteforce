@@ -1,2 +1,3 @@
 # bruteforce
-PoC - bruteforce breaking AES-128 bit
+
+Proof-of-Concept cum Code Practice of bruteforce breaking AES-128 bit
